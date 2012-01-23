@@ -19,9 +19,16 @@ typedef BOOL (^ PredicateBlock)(id);
 - (BOOL)anyWithBlock:(PredicateBlock)block;
 - (id)detectWithBlock:(PredicateBlock)block;
 
+/** 
+ Same as calling [self objectAtIndex:0]
+ @return firstObject - The first object in the array. Returns nil if array is empty
+ */
 - (id)firstObject;
 
-+ (NSArray *)arrayWithNumbersFromInts:(int)count, ...;
+/** 
+ @param count - The number of integers which will go into the array
+ */
++ (NSArray *)arrayWithNumbersFromInts:(int)first, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end
 

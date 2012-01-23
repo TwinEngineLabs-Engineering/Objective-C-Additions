@@ -11,7 +11,7 @@
 @implementation NSArray (SequenceUtils)
 
 - (id)firstObject {
-  return [self objectAtIndex:0];
+  return self.count > 0 ? [self objectAtIndex:0] : nil;
 }
 
 - (NSArray *)mapWithBlock:(SequenceBlock)block {
@@ -56,16 +56,18 @@
   return nil;
 }
 
-+ (NSArray *)arrayWithNumbersFromInts:(int)count, ... {
-  NSMutableArray *mAry = [[NSMutableArray alloc] initWithCapacity:count];
++ (NSArray *)arrayWithNumbersFromInts:(int)first, ... {
+  NSMutableArray *mAry = [[NSMutableArray alloc] init];
   
   va_list args;
-  va_start(args, count);
-  
-  for (int x = 0; x < count; x++) {
-    [mAry addObject:[NSNumber numberWithInt:va_arg(args, int)]];
+  va_start(args, first);
+  int value;
+  if (first) {
+    [mAry addObject:[NSNumber numberWithInt:first]];
   }
-  
+  while ((value = va_arg(args, int))) {
+    [mAry addObject:[NSNumber numberWithInt:value]];
+  }
   va_end(args);
   
   return [NSArray arrayWithArray:mAry];

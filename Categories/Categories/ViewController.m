@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SequenceUtils.h"
 
 @implementation ViewController
 
@@ -22,6 +23,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+  NSArray *a = [NSArray arrayWithNumbersFromInts:10, 20, 30, nil];
+  NSLog(@"Array: %@", a);
 }
 
 - (void)viewDidUnload
