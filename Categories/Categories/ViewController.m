@@ -24,7 +24,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
   NSArray *a = [NSArray arrayWithNumbersFromInts:10, 20, 30, nil];
-  NSLog(@"Array: %@", a);
+  NSArray *newArray = [a mapWithBlock:^id(NSNumber * obj){
+    return [NSNumber numberByMultiplyingNumbers:obj, obj, nil];
+  }];
+  NSLog(@"New array: %@", newArray);
 }
 
 - (void)viewDidUnload
