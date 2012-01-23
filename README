@@ -1,0 +1,3 @@
+Readme
+
+This project contains SequenceUtils.* which simply add useful methods to collections such as the ability to construct them from a list of primitives, specify a block for generating a sequence, etc.
